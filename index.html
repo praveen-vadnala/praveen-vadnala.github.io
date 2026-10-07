@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Praveen Kumar Vadnala</title>
+<meta name="description" content="Praveen Kumar Vadnala. Staff Product Security Analyst at PQShield, working on side-channel and fault attacks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F3F6F7;
+  --ink: #18222C;
+  --muted: #5A6874;
+  --rule: #D3DCE1;
+  --signal: #1E5F86;
+  --leak: #C2410C;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121A21; --ink: #E4EBEF; --muted: #93A3AF; --rule: #2A3640; --signal: #7DB8DC; --leak: #F2915A;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121A21; --ink: #E4EBEF; --muted: #93A3AF; --rule: #2A3640; --signal: #7DB8DC; --leak: #F2915A;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem; line-height: 1.65;
+  font-variant-numeric: oldstyle-nums;
+}
+main { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
+a { color: var(--signal); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+header { padding: 4.5rem 0 1rem; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.25rem); font-weight: 700; line-height: 1.1; margin: 0 0 .6rem; letter-spacing: -.01em; }
+.role { color: var(--muted); margin: 0; font-size: 1.125rem; }
+.placeholder { background: color-mix(in srgb, var(--leak) 14%, transparent); padding: 0 .25em; border-radius: 3px; }
+
+.trace { display: block; width: 100%; height: auto; margin: 2.5rem 0 .25rem; overflow: visible; }
+.trace .line { fill: none; stroke: var(--signal); stroke-width: 1.4; stroke-linejoin: round; }
+.trace .spike { fill: none; stroke: var(--leak); stroke-width: 1.6; stroke-linejoin: round; }
+.trace .axis { stroke: var(--rule); stroke-width: 1; }
+.trace text { fill: var(--leak); font-family: inherit; font-size: 12px; font-style: italic; }
+.trace-caption { font-size: .85rem; color: var(--muted); margin: 0 0 3rem; font-style: italic; }
+@media (prefers-reduced-motion: no-preference) {
+  .trace .line, .trace .spike { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: draw 2.4s ease-out .2s forwards; }
+  .trace text { opacity: 0; animation: show .6s ease-out 2.2s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes show { to { opacity: 1; } }
+}
+
+nav { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; padding: 1rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 3rem; font-size: .95rem; }
+
+section { margin-bottom: 3.5rem; }
+h2 { font-size: 1.5rem; font-weight: 500; margin: 0 0 1rem; }
+p { margin: 0 0 1rem; }
+
+.topics { padding: 0; margin: 0; list-style: none; }
+.topics li { padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+.topics li:last-child { border-bottom: 0; }
+.topics strong { font-weight: 500; }
+
+.year { display: grid; grid-template-columns: 4rem 1fr; gap: 0 1rem; padding: 1rem 0; border-top: 1px solid var(--rule); }
+.year > span { color: var(--muted); font-variant-numeric: lining-nums tabular-nums; padding-top: .1rem; }
+.pub { margin: 0 0 1.1rem; }
+.pub:last-child { margin-bottom: 0; }
+.pub .title { font-weight: 500; display: block; }
+.pub .meta { color: var(--muted); font-size: .95rem; display: block; }
+.pub .meta .me { color: var(--ink); }
+.pub .links { font-size: .9rem; }
+
+.contact dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.5rem; margin: 0; }
+.contact dt { color: var(--muted); }
+.contact dd { margin: 0; overflow-wrap: anywhere; }
+
+footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+@media (max-width: 30rem) {
+  .year { grid-template-columns: 1fr; }
+  .year > span { margin-bottom: .5rem; }
+  header { padding-top: 3rem; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Praveen Kumar Vadnala</h1>
+    <p class="role">Staff Product Security Analyst at PQShield. I work on side-channel and fault attacks on cryptographic implementations.</p>
+
+    <svg class="trace" viewBox="0 0 680 90" role="img" aria-label="Stylised power trace with a single leaking spike">
+      <line class="axis" x1="0" y1="60" x2="680" y2="60"/>
+      <polyline class="line" points="0,58 20,54 32,62 44,50 58,60 72,52 86,63 100,49 116,59 130,53 144,61 160,48 176,58 190,52 204,62 218,50 232,60 246,54 262,62 276,49 290,58 304,53 318,61 332,51 346,59"/>
+      <polyline class="spike" points="346,59 356,56 364,8 372,70 380,52 390,60"/>
+      <polyline class="line" points="390,60 404,51 418,62 432,50 446,58 462,53 476,61 490,49 506,59 520,52 534,62 548,50 562,58 578,53 592,61 606,51 620,59 636,52 650,62 664,50 680,57"/>
+      <text x="378" y="16">the leak</text>
+    </svg>
+    <p class="trace-caption">Every implementation leaks something. I find these leaks and help fix them.</p>
+  </header>
+
+  <nav aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I work on the physical security of cryptographic implementations. Devices leak secrets through power use and electromagnetic signals. Attackers can also inject faults to make them fail. I find these weaknesses and help make products secure against them.</p>
+    <p>I am a Staff Product Security Analyst at PQShield. I help make sure post-quantum cryptography implementations are secure against side-channel analysis (SCA) and fault injection (FI).</p>
+    <p>From 2016 to 2025 I worked at Riscure, now part of Keysight. There I evaluated secure elements, SoCs and roots of trust against SCA and FI attacks.</p>
+    <p>I received my PhD in computer science from the University of Luxembourg in 2015. My thesis was on <a href="https://orbilu.uni.lu/handle/10993/21653">provably secure countermeasures against side-channel attacks</a>. It gave the first method to convert between Boolean and arithmetic masking that is secure against attacks of any order.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <ul class="topics">
+      <li><strong>SCA countermeasures.</strong> Masking, shuffling and other ways to protect cryptographic code against SCA. This includes secure and fast conversion between Boolean and arithmetic masking, and higher-order masking.</li>
+      <li><strong>Fault injection.</strong> Voltage and EM fault attacks. How clock frequency affects faults. Using machine learning to find good fault settings automatically.</li>
+      <li><strong>Post-quantum cryptography.</strong> Protecting new post-quantum algorithms against SCA and FI.</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <p>Full list on <a href="https://scholar.google.com/citations?user=M7OD-TsAAAAJ&amp;hl=en">Google Scholar</a> and <a href="https://dblp.org/pid/29/1834.html">dblp</a>.</p>
+
+    <div class="year"><span>2024</span><div>
+      <p class="pub"><span class="title">Practical Improvements to Statistical Ineffective Fault Attacks</span>
+        <span class="meta">B. Ege, B. Swinkels, D. Toprakhisar, <span class="me">P. K. Vadnala</span>. COSADE 2024</span>
+        <span class="links"><a href="https://eprint.iacr.org/2024/284">ePrint</a></span></p>
+      <p class="pub"><span class="title">CGAN-based Automated Fault Injection</span>
+        <span class="meta">T. Ç. Köylü, C. C. Berg, <span class="me">P. K. Vadnala</span>. ETS 2024</span></p>
+    </div></div>
+
+    <div class="year"><span>2022</span><div>
+      <p class="pub"><span class="title">On the Effect of Clock Frequency on Voltage and Electromagnetic Fault Injection</span>
+        <span class="meta">S. Koffas, <span class="me">P. K. Vadnala</span>. ACNS Workshops 2022</span>
+        <span class="links"><a href="https://arxiv.org/abs/2310.13389">arXiv</a></span></p>
+    </div></div>
+
+    <div class="year"><span>2017</span><div>
+      <p class="pub"><span class="title">Time-Memory Trade-Offs for Side-Channel Resistant Implementations of Block Ciphers</span>
+        <span class="meta"><span class="me">P. K. Vadnala</span>. CT-RSA 2017</span></p>
+    </div></div>
+
+    <div class="year"><span>2016</span><div>
+      <p class="pub"><span class="title">Implementation of a Leakage-Resilient ElGamal Key Encapsulation Mechanism</span>
+        <span class="meta">D. Galindo, J. Großschädl, Z. Liu, <span class="me">P. K. Vadnala</span>, S. Vivek. Journal of Cryptographic Engineering 6(3)</span>
+        <span class="links"><a href="https://eprint.iacr.org/2014/835">ePrint</a></span></p>
+      <p class="pub"><span class="title">Shuffling Across Rounds: A Lightweight Strategy to Counter Side-Channel Attacks</span>
+        <span class="meta">S. Patranabis, D. B. Roy, <span class="me">P. K. Vadnala</span>, D. Mukhopadhyay, S. Ghosh. ICCD 2016</span></p>
+    </div></div>
+
+    <div class="year"><span>2015</span><div>
+      <p class="pub"><span class="title">Provably Secure Countermeasures against Side-channel Attacks</span>
+        <span class="meta"><span class="me">P. K. Vadnala</span>. PhD thesis, University of Luxembourg</span>
+        <span class="links"><a href="https://orbilu.uni.lu/handle/10993/21653">PDF</a></span></p>
+      <p class="pub"><span class="title">Faster Mask Conversion with Lookup Tables</span>
+        <span class="meta"><span class="me">P. K. Vadnala</span>, J. Großschädl. COSADE 2015</span></p>
+      <p class="pub"><span class="title">Higher-Order Masking in Practice: A Vector Implementation of Masked AES for ARM NEON</span>
+        <span class="meta">J. Wang, <span class="me">P. K. Vadnala</span>, J. Großschädl, Q. Xu. CT-RSA 2015</span></p>
+      <p class="pub"><span class="title">Conversion from Arithmetic to Boolean Masking with Logarithmic Complexity</span>
+        <span class="meta">J.-S. Coron, J. Großschädl, M. Tibouchi, <span class="me">P. K. Vadnala</span>. FSE 2015</span>
+        <span class="links"><a href="https://eprint.iacr.org/2014/891">ePrint</a></span></p>
+    </div></div>
+
+    <div class="year"><span>2014</span><div>
+      <p class="pub"><span class="title">Secure Conversion between Boolean and Arithmetic Masking of Any Order</span>
+        <span class="meta">J.-S. Coron, J. Großschädl, <span class="me">P. K. Vadnala</span>. CHES 2014</span></p>
+    </div></div>
+
+    <div class="year"><span>2013</span><div>
+      <p class="pub"><span class="title">Algorithms for Switching between Boolean and Arithmetic Masking of Second Order</span>
+        <span class="meta"><span class="me">P. K. Vadnala</span>, J. Großschädl. SPACE 2013</span></p>
+    </div></div>
+
+    <div class="year"><span>2012</span><div>
+      <p class="pub"><span class="title">Conversion of Security Proofs from One Leakage Model to Another: A New Issue</span>
+        <span class="meta">J.-S. Coron, C. Giraud, E. Prouff, S. Renner, M. Rivain, <span class="me">P. K. Vadnala</span>. COSADE 2012</span></p>
+    </div></div>
+
+    <div class="year"><span>2006</span><div>
+      <p class="pub"><span class="title">An Efficient Key Assignment Scheme for Access Control in a Hierarchy</span>
+        <span class="meta"><span class="me">P. K. Vadnala</span>, A. Mathuria. ICISS 2006</span></p>
+    </div></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <dl>
+      <dt>Email</dt><dd>praveen.vadnala at gmail.com</dd>
+      <dt>Scholar</dt><dd><a href="https://scholar.google.com/citations?user=M7OD-TsAAAAJ&amp;hl=en">Google Scholar profile</a></dd>
+      <dt>dblp</dt><dd><a href="https://dblp.org/pid/29/1834.html">dblp.org/pid/29/1834</a></dd>
+      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/praveenvadnala/">linkedin.com/in/praveenvadnala</a></dd>
+    </dl>
+  </section>
+
+  <footer>Last updated October 2026.</footer>
+</main>
+</body>
+</html>
